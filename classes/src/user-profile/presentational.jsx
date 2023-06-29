@@ -1,4 +1,4 @@
-// src/user-profile/presentational.jsx
+// classes/src/user-profile/presentational.jsx
 
 export default function UserProfile({ user, handleLike }) {
   return (

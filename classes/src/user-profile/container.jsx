@@ -1,4 +1,5 @@
-// src/user-profile/container.jsx
+// classes/src/user-profile/container.jsx
+
 import { Component } from "react";
 import { getUser, likeUser } from "../../../shared/user";
 import Presentational from "./presentational";
