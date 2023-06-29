@@ -1,9 +1,11 @@
 // src/user-profile/container.jsx
-import Presentational from "./presentational";
-import { getUser, likeUser, USER_TAG } from "./user";
+// rsc/app/page.jsx
+
+import { getUser, likeUser } from "../../shared/user";
+import Presentational from "./Presentational";
 
 // In RSC revalidation is handled by the Framework (Next.js)
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export default async function UserProfile() {
   const user = await getUser();
@@ -11,7 +13,7 @@ export default async function UserProfile() {
   async function handleLike() {
     "use server";
     await likeUser(user.id);
-    revalidateTag(USER_TAG);
+    revalidatePath("/");
   }
 
   return <Presentational user={user} handleLike={handleLike} />;
