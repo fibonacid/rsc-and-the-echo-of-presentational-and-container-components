@@ -11,12 +11,12 @@ users.set("1", {
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function getUser(userId = "1") {
-  await wait(1000);
+  await wait(100);
   return users.get(userId);
 }
 
 export async function likeUser(userId) {
-  await wait(1000);
+  await wait(100);
   const user = users.get(userId);
   if (!user) throw new Error("User not found");
 
