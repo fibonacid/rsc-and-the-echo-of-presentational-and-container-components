@@ -22,14 +22,6 @@ export default class UserProfile extends Component {
   async handleLike() {
     const user = this.state.user;
     if (!user) return;
-    const optimisticResult = {
-      ...user,
-      likes: user.likes + 1,
-      _optimistic: true,
-    };
-    this.setState({
-      user: optimisticResult,
-    });
     await likeUser(user.id);
     this.revalidate();
   }

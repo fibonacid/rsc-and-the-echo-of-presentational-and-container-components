@@ -1,4 +1,3 @@
-// src/user-profile/container.jsx
 // rsc/app/page.jsx
 
 import { getUser, likeUser } from "../../shared/user";

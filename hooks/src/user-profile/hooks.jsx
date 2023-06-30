@@ -12,7 +12,7 @@ export function useUser() {
 
   useEffect(revalidate, [revalidate]);
 
-  return { user, update: setUser, revalidate };
+  return { user, revalidate };
 }
 
 export function useLikeUser() {
@@ -20,17 +20,11 @@ export function useLikeUser() {
 }
 
 export function useUserProfile() {
-  const { user, revalidate, update } = useUser();
+  const { user, revalidate } = useUser();
   const likeUser = useLikeUser();
 
   const handleLike = useCallback(async () => {
     if (!user) return;
-    const optimisticResult = {
-      ...user,
-      likes: user.likes + 1,
-      _optimistic: true,
-    };
-    update(optimisticResult);
     await likeUser(user.id);
     revalidate();
   }, [user]);

@@ -12,22 +12,14 @@ export default function UserProfile({ user, handleLike }) {
         {user.firstName} {user.lastName}
       </h3>
       <p>{user.bio}</p>
-      <div
-        style={{
-          display: "flex",
-          gap: "0.5rem",
+      <button
+        onClick={() => {
+          startTransition(handleLike);
         }}
       >
-        <button
-          onClick={() => {
-            // Haven't figured out optimistic updates yet
-            startTransition(handleLike);
-          }}
-        >
-          Like
-        </button>
-        <span>{user.likes}</span>
-      </div>
+        Like
+      </button>
+      <span>{user.likes}</span>
     </section>
   );
 }
